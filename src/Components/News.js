@@ -13,7 +13,8 @@ export class News extends Component {
     }
   }
   async componentDidMount() {
-    let url = "https://newsapi.org/v2/everything?q=apple&from=2023-01-10&to=2023-01-10&sortBy=popularity&apiKey=565c168d4a9040d99f607a73966637ed&pageSize=3";
+    // let url = "https://newsapi.org/v2/everything?q=apple&from=2023-01-10&to=2023-01-10&sortBy=popularity&apiKey=565c168d4a9040d99f607a73966637ed&pageSize=3";
+   let url= `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=565c168d4a9040d99f607a73966637ed&pageSize=3`;
     this.setState({loading:true});
     let data = await fetch(url);
     let parsedData = await data.json();
@@ -25,7 +26,9 @@ export class News extends Component {
   }
   handleNextClick = async () => {
     console.log("Next Clicked")
-    let url = `https://newsapi.org/v2/everything?q=apple&from=2023-01-10&to=2023-01-10&sortBy=popularity&apiKey=565c168d4a9040d99f607a73966637ed&page=${this.state.page + 1}&pageSize=3`;
+    // let url = `https://newsapi.org/v2/everything?q=apple&from=2023-01-10&to=2023-01-10&sortBy=popularity&apiKey=565c168d4a9040d99f607a73966637ed&page=${this.state.page + 1}&pageSize=3`;
+    let url= `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=565c168d4a9040d99f607a73966637ed&page=${this.state.page + 1}&pageSize=3`;
+    
     this.setState({loading:true});
     let data = await fetch(url);
     let parsedData = await data.json();
@@ -38,7 +41,9 @@ export class News extends Component {
   }
   handlePreviousClick = async () => {
     console.log("Previous Clicked")
-    let url = `https://newsapi.org/v2/everything?q=apple&from=2023-01-10&to=2023-01-10&sortBy=popularity&apiKey=565c168d4a9040d99f607a73966637ed&page=${this.state.page - 1}&pageSize=3`;
+    // let url = `https://newsapi.org/v2/everything?q=apple&from=2023-01-10&to=2023-01-10&sortBy=popularity&apiKey=565c168d4a9040d99f607a73966637ed&page=${this.state.page - 1}&pageSize=3`;
+    let url= `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=565c168d4a9040d99f607a73966637ed&page=${this.state.page - 1}&pageSize=3`;
+    
     this.setState({loading:true});
     let data = await fetch(url);
     let parsedData = await data.json();
