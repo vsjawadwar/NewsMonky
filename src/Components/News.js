@@ -3,13 +3,17 @@ import NewsItem from './NewsItem'
 import Spinner from './Spinner';
 
 export class News extends Component {
-  constructor() {
-    super();
+  capitalizeFirstLetter=(string)=>{
+    return string.charAt(0).toUpperCase()+ string.slice(1);
+  }
+  constructor(props) {
+    super(props);
     this.state = {
       articles: [],
       loading: false,
       page: 1
     }
+    document.title=`NewsMonky-${this.capitalizeFirstLetter(this.props.category)}`;
   }
   async updateNews() {
     const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=565c168d4a9040d99f607a73966637ed&page=${this.state.page}&pageSize=3`;
